@@ -106,7 +106,7 @@ def get_foreign_currency(country_code):
     return summery_dict
 
 
-def getLineMsgFormat():
+def get_line_msg_format():
     """
         "bk_content": {
             "臺灣銀行": [30.815, 30.915],
@@ -136,5 +136,5 @@ def getLineMsgFormat():
 
 if __name__ == "__main__":
     token = os.environ["LINE_TOKEN"]
-    line_msg_contents = getLineMsgFormat()
+    line_msg_contents = get_line_msg_format()
     status = line_notify(token, line_msg_contents)
