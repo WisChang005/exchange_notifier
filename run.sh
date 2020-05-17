@@ -1,5 +1,7 @@
 #! /bin/bash
 
-source environment
+FILEDIR=$(dirname "$0")
 
-python3 exchange_notifier.py
+source ${FILEDIR}/environment
+
+python3 ${FILEDIR}/exchange_notifier.py
