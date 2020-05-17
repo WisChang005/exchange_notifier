@@ -137,4 +137,4 @@ def get_line_msg_format():
 if __name__ == "__main__":
     token = os.environ["LINE_TOKEN"]
     line_msg_contents = get_line_msg_format()
-    status = line_notify(token, line_msg_contents)
+    line_notify(token, line_msg_contents)
