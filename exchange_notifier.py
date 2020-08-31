@@ -134,7 +134,29 @@ def get_line_msg_format():
     return msg.strip()
 
 
+def get_gold_prise():
+    web_url = "https://www.goldlegend.com/"
+    headers = {
+        'User-Agent': ('Mozilla/5.0 (X11; Linux x86_64) '
+                       'AppleWebKit/537.36 (KHTML, like Gecko) '
+                       'Chrome/58.0.3029.81 Safari/537.36')
+    }
+    resp = get_web_page(web_url, headers)
+    soup = BeautifulSoup(resp.text, "lxml")
+
+    gold_price_buy = soup.find("span", {"class": "goldprice_tw_buy"}).text
+    gold_price_sell = soup.find("span", {"class": "goldprice_tw_sell"}).text
+
+    line_msg_format = "\n今日黃金價格 - (TWD/錢)\n買進:  {}\n賣出:  {}".format(
+        gold_price_buy, gold_price_sell)
+    print(line_msg_format)
+    return line_msg_format
+
+
 if __name__ == "__main__":
     token = os.environ["LINE_TOKEN"]
-    line_msg_contents = get_line_msg_format()
-    line_notify(token, line_msg_contents)
+    foreign_currency_msg = get_line_msg_format()
+    line_notify(token, foreign_currency_msg)
+
+    gold_prise_msg = get_gold_prise()
+    line_notify(token, gold_prise_msg)
