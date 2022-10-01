@@ -116,7 +116,7 @@ def get_line_msg_format():
         "bk_tb_title":
             ["銀行名稱", "即期買入", "即期賣出"]
     """
-    country_list = ["USD", "JPY", "CNY", "EUR"]
+    country_list = ["USD", "JPY", "CAD", "EUR"]
     msg = "臺灣銀行\n------------------\n"
     for country_i in country_list:
         summery_dict = get_foreign_currency(country_code=country_i)
